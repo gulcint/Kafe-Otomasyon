@@ -54,8 +54,6 @@ class odemeYap(QWidget):
 
         sorgulaButton.clicked.connect(self.tutarSorgula)
 
-
-
         dikey.addStretch()
         dikey.addWidget(aciklama)
         dikey.addWidget(aciklama2)
@@ -76,7 +74,6 @@ class odemeYap(QWidget):
 
         self.aciklama3.setText("Hesaplanıyor...")
         QTest.qWait(1000)
-
 
         masa_nu = self.masa_numara.text()
 
@@ -122,12 +119,7 @@ class adisyonEkle(QWidget):
 
         self.tablo.setRowCount(row_count)
         self.tablo.setColumnCount(col_count)
-
-        # self.tablo.setItem(0,0,QTableWidgetItem( col[0][0]))
-        # self.tablo.setItem(0,1, QTableWidgetItem(col[1][0]))
-        # self.tablo.setItem(0,2, QTableWidgetItem(col[2][0]))
-        # self.tablo.setItem(0,3, QTableWidgetItem(col[3][0]))
-
+        
         load_data = kalem.execute("SELECT * FROM menu")
 
         self.tablo.setRowCount(0)
@@ -138,17 +130,13 @@ class adisyonEkle(QWidget):
 
         self.tablo.setColumnHidden(0,True)
         self.tablo.setEditTriggers(QAbstractItemView.NoEditTriggers)
-        #self.tablo.doubleClicked.connect(self.on_click)
         self.tablo.cellDoubleClicked.connect(self.on_click)
-
-
 
         dikey.addWidget(baslik)
         dikey.addWidget(aciklama)
         dikey.addWidget(aciklama2)
         dikey.addWidget(self.masa_nu)
         dikey.addWidget(self.tablo)
-
 
         yatay.addLayout(dikey)
         self.setLayout(yatay)
@@ -208,13 +196,6 @@ class menuClass(QWidget):
         liste.setAlternatingRowColors(True)
 
         liste.itemClicked.connect(self.yiyecekBilgi)
-
-        # listedeki elemanın üzerine okla gelince türünü ve fiyatini göstersin labelde
-
-        # adisyonButon = QPushButton("Adisyona Ekle")
-        # adisyonButon.setFont(butonFont)
-
-        #adisyonButon.clicked.connect(self.ekle)
 
         dikey.addWidget(baslik)
         dikey.addWidget(aciklama)
@@ -354,8 +335,6 @@ class uyeOturumAcma(QWidget):
                     QMessageBox.question(self, "Uyarı", "Kullanıcı parolanızı yanlış girdiniz!", QMessageBox.Ok)
             else:
                 QMessageBox.question(self, "Uyarı", "Kullanıcı adınızı yanlış girdiniz!", QMessageBox.Ok)
-            #  !! kullanıcı adı yanlış girildiğinde program sonlanıyor
-
         else :
             if(self.isim == ""):
                 QMessageBox.question(self,"Uyarı","Kullanıcı adınızı girmediniz!!!",QMessageBox.Ok)
@@ -526,3 +505,4 @@ class Pencere(QWidget):
 uygulama  = QApplication(sys.argv)
 pencere = Pencere()
 uygulama.exit(uygulama.exec_())
+
